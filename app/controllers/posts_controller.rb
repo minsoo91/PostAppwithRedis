@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
-		$redis.incr
+		$redis.incr("#{Date.today.year}:#{Date.today.month}:#{Date.today.day}:posts:#{@post.id}:views")
+		$redis.sadd("#{Date.today.year}:#{Date.today.month}:#{Date.today.day}:posts:#{@post.id}:uniques", request.remote_ip)
 	end
 
 	def new
