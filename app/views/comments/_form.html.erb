@@ -1,0 +1,11 @@
+<h3>Comment</h3>
+<form action="<%= post_comments_path(@post) %>" method="POST">
+	<input type="hidden"
+		   name="authenticity_token"
+		   value="<%= form_authenticity_token %>">
+	<input type="textarea"
+	       name="comment[body]">
+	<input type="submit"
+		   value="submit"
+		   class="btn btn-primary btn-medium">
+</form>
